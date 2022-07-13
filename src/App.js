@@ -8,10 +8,15 @@ function App() {
   const [myElementIsVisible , setMyElementIsVisible] = useState();
   console.log("myElementIsVisible", myElementIsVisible)
   useEffect(()=>{
-  const obeserver = new IntersectionObserver((entries)=>{
+    let options = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.2
+    }
+    const obeserver = new IntersectionObserver((entries)=>{
     const entry = entries[0];
     setMyElementIsVisible(entry.isIntersecting)
-  })
+  },options)
   obeserver.observe(myRef.current)
 
   },[])
@@ -29,11 +34,11 @@ function App() {
       <div className='box3'>
         <h1>Container 3</h1>
       </div>
-      <div ref={myRef} className={`box fade-in-section ${myElementIsVisible} ? 'is-visible' : ''}`}>
+      <div ref={myRef} className={`box4 fade-in-section ${myElementIsVisible ? 'is-visible' : ''}`}>
         <h1>Container 4</h1>
         <p>{myElementIsVisible ? "Yes" : "No"}</p>
       </div>
-      <div ref= {myRef} className='box5 '>
+      <div ref= {myRef} className={`box5 fade-in-section ${myElementIsVisible ? 'is-visible' : ''}`}>
         <h1>{myElementIsVisible ? "Yes" : "No"}</h1>
       </div>
     </div>
