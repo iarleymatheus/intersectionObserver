@@ -1,3 +1,16 @@
-import styled from "styled-components"
+import { createGlobalStyle } from "styled-components";
 
-function GlobalStyle = div
+const GlobalStyle = createGlobalStyle`
+
+*{
+  margin:0;
+  padding:0;
+}
+background-color: black;
+
+
+
+
+
+`;
+export default GlobalStyle;
